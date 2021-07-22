@@ -1,0 +1,35 @@
+﻿<Window x:Class="Celestial.Overlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Celestial"
+        mc:Ignorable="d"
+        Title="Overlay"
+        WindowStartupLocation="Manual"
+        Top="{Binding Top, Mode=TwoWay}"
+        Left="{Binding Left, Mode=TwoWay}"
+        Height="{Binding Height, Mode=TwoWay}"
+        Width="{Binding Width, Mode=TwoWay}"
+        WindowStyle="None"
+        Topmost="True"
+        AllowsTransparency="True"
+        ShowInTaskbar="False">
+    <Window.Background>
+        <SolidColorBrush Opacity="0" Color="Black"/>
+    </Window.Background>
+    <ItemsControl DockPanel.Dock="Top" Margin="{Binding Path=DataContext.Thicc, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" ItemsSource="{Binding Stats}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <DockPanel Margin="0,2" Name="TextDock">
+                    <TextBlock Text="{Binding}" FontFamily="Consolas" FontSize="18" Foreground="White"/>
+                </DockPanel>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</Window>
